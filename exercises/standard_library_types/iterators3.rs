@@ -7,8 +7,6 @@
 // Execute `rustlings hint iterators3` to get some hints!
 // Have fun :-)
 
-// I AM NOT DONE
-
 #[derive(Debug, PartialEq, Eq)]
 pub enum DivisionError {
     NotDivisible(NotDivisibleError),
@@ -72,7 +70,7 @@ mod tests {
     fn result_with_list() {
         let numbers = vec![27, 297, 38502, 81];
         let division_results = numbers.into_iter().map(|n| divide(n, 27));
-        let x = Ok(division_results.map(Result::unwrap).collect::<Vec<i32>>());
+        let x: Result<Vec<i32>, DivisionError> = Ok(division_results.map(Result::unwrap).collect::<Vec<i32>>());
         assert_eq!(format!("{:?}", x), "Ok([1, 11, 1426, 3])");
     }
 
